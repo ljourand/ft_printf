@@ -50,20 +50,12 @@ static int	iterate(const char *format, va_list pi, int (*f[8])(va_list))
 			format++;
 			index = ft_strchr(charset, *format) - charset;
 			if (index < 0)
-			{
-				ft_putchar_fd(*format, 1);
-				count++;
-			}
+				count += write(1, format, 1);
 			else
-			{
 				count += f[index](pi);
-			}
 		}
 		else if (*format != '%')
-		{
-			ft_putchar_fd(*format, 1);
-			count++;
-		}
+			count += write(1, format, 1);
 		format++;
 	}
 	return (count);

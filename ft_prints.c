@@ -34,8 +34,11 @@ int	ft_prints(va_list pi)
 
 int	ft_printp(va_list pi)
 {
-	write(1, "0x", 2);
-	return (ft_putnbr_base((unsigned long long)va_arg(pi, void *), "0123456789abcdef") + 2);
+	int	n;
+
+	n = write(1, "0x", 2);
+	n += ft_putnbr_base((unsigned long)va_arg(pi, void *), "0123456789abcdef");
+	return (n);
 }
 
 int	ft_printd(va_list pi)
